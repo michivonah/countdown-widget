@@ -1,0 +1,25 @@
+<body onload="window.setInterval('countdown(1, 1, 1, 1, 1)',1000)">
+  <div id="countdown" oncontextmenu="return false;">
+    <p id="counter"><var id="days">00</var>:<var id="hours">00</var>:<var id="mins">00</var>:<var id="secs">00</var></p>
+    <p id="counterlabels">Tage, Stunden, Minuten, Sekunden</p>
+  </div>
+</body>
+<script>
+  function countdown(day, month, year, hour, minute){
+    var dateNow = new Date();
+    var dateCountdown = new Date('December 12, 2021 12:00:00');
+    var secsToDate = Math.abs(dateCountdown - dateNow) / 1000;
+    var secs = secsToDate;
+    var mins = secsToDate / 60;
+    var hours = secsToDate / 60 / 60;
+    var days = secsToDate / 60 / 60 /24;
+    document.getElementById('days').innerHTML = days.toFixed();
+    var temp = days.toFixed() * 24;
+    document.getElementById('hours').innerHTML = hours.toFixed() - temp + 24;
+    var temp = hours.toFixed() * 60;
+    document.getElementById('mins').innerHTML = mins.toFixed() - temp + 60;
+    var temp = mins.toFixed() * 60;
+    document.getElementById('secs').innerHTML = secs.toFixed() - temp + 30;
+    //document.getElementById('secs').innerHTML = Number(document.getElementById('secs').innerHTML) - 1;
+  }
+</script>
