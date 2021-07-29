@@ -1,0 +1,31 @@
+body{
+  margin: 0;
+  padding: 0;
+  font-family: arial, sans-serif;
+  user-select: none;
+  --textcolor: #000;
+  --backgroundcolor: #fff;
+  --secoundscolor: #e74c3c;
+}
+
+#counter{
+  font-size: 64px;
+  color: var(--textcolor);
+  margin: 0;
+  padding: 0;
+}
+
+#counterlabels{
+  font-size: 22px;
+  color: var(--textcolor);
+  margin: 0;
+  padding: 0;
+}
+
+#secs{
+  color: var(--secoundscolor);
+}
+
+var{
+  font-style: normal;
+}
