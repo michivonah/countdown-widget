@@ -49,11 +49,13 @@ var{
     //var minute = sessionStorage.getItem('minute');
     var hour = 12;
     var minute = 00;
+    var createDate = month + ', ' + day + ', ' + year + ' ' + hour + ':' + minute + ':00';
+    console.log(createDate);
     
   
     var dateNow = new Date();
     //var dateCountdown = new Date('12, 31, 2021 12:00:00');
-    var dateCountdown = new Date(month, day, year, hour, minute, 00);
+    var dateCountdown = new Date(createDate);
     var secsToDate = Math.abs(dateCountdown - dateNow) / 1000;
     var days = Math.floor(secsToDate / 86400);
     var hours = Math.floor(secsToDate / 3600) % 24;
