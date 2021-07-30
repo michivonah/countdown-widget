@@ -7,7 +7,7 @@ body{
   background: var(--backgroundcolor);
   
   --textcolor: #000;
-  --backgroundcolor: #fff;
+  --backgroundcolor: transparent;
   --secoundscolor: #e74c3c;
 }
 
@@ -83,21 +83,21 @@ var{
   	if(window.location.search != ''){
     	var url = window.location.search;
       var queries = url.replace('?q=', '');
-      var dateToTrack = queries.slice(0, 8);
-      var fontColor = queries.slice(9, 16);
-      var secsColor = queries.slice(17, 24);
-      var language = queries.slice(25, 27);
+      var dateToTrack = queries.slice(0, 10);
+      var fontColor = queries.slice(11, 18);
+      var secsColor = queries.slice(19, 26);
+      var language = queries.slice(27, 29);
       sessionStorage.setItem('dateToTrack', dateToTrack);
       sessionStorage.setItem('fontColor', fontColor);
       sessionStorage.setItem('secsColor', secsColor);
       sessionStorage.setItem('language', language);
       
-      sessionStorage.setItem('day', dateToTrack.slice(0, 1));
-      sessionStorage.setItem('month', dateToTrack.slice(2, 3));
-      sessionStorage.setItem('year', dateToTrack.slice(4, 7));
-      sessionStorage.setItem('hour', dateToTrack.slice(8, 9));
-      sessionStorage.setItem('minute', dateToTrack.slice(10, 11));
-      // 01012000+#ffffff+#ff0000+de
+      sessionStorage.setItem('day', dateToTrack.slice(0, 2));
+      sessionStorage.setItem('month', dateToTrack.slice(3, 5));
+      sessionStorage.setItem('year', dateToTrack.slice(6, 10));
+      sessionStorage.setItem('hour', dateToTrack.slice(11, 13));
+      sessionStorage.setItem('minute', dateToTrack.slice(14, 16));
+      // 010120001200+#ffffff+#ff0000+de
       
       // sessionStorage.getItem('day');
     }
