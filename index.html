@@ -1,25 +1,105 @@
-<body onload="window.setInterval('countdown(1, 1, 1, 1, 1)',1000)">
+<style>
+body{
+  margin: 0;
+  padding: 0;
+  font-family: arial, sans-serif;
+  user-select: none;
+  background: var(--backgroundcolor);
+  
+  --textcolor: #000;
+  --backgroundcolor: #fff;
+  --secoundscolor: #e74c3c;
+}
+
+#counter{
+  font-size: 16vw;
+  color: var(--textcolor);
+  margin: 0;
+  padding: 0;
+}
+
+#counterlabels{
+  font-size: 6vw;
+  color: var(--textcolor);
+  margin: 0;
+  padding: 0;
+}
+
+#secs{
+  color: var(--secoundscolor);
+}
+
+var{
+  font-style: normal;
+}
+</style>
+<body onload="window.setInterval('countdown()',1000)">
   <div id="countdown" oncontextmenu="return false;">
     <p id="counter"><var id="days">00</var>:<var id="hours">00</var>:<var id="mins">00</var>:<var id="secs">00</var></p>
     <p id="counterlabels">Tage, Stunden, Minuten, Sekunden</p>
   </div>
 </body>
 <script>
-  function countdown(day, month, year, hour, minute){
+  function countdown(){
+  	var day = sessionStorage.getItem('day');
+    var month = sessionStorage.getItem('month');
+    var year = sessionStorage.getItem('year');
+    //var hour = sessionStorage.getItem('hour');
+    //var minute = sessionStorage.getItem('minute');
+    var hour = 12;
+    var minute = 00;
+    
+  
     var dateNow = new Date();
-    var dateCountdown = new Date('December 12, 2021 12:00:00');
+    //var dateCountdown = new Date('12, 31, 2021 12:00:00');
+    var dateCountdown = new Date(month, day, year, hour, minute, 00);
     var secsToDate = Math.abs(dateCountdown - dateNow) / 1000;
-    var secs = secsToDate;
-    var mins = secsToDate / 60;
-    var hours = secsToDate / 60 / 60;
-    var days = secsToDate / 60 / 60 /24;
-    document.getElementById('days').innerHTML = days.toFixed();
-    var temp = days.toFixed() * 24;
-    document.getElementById('hours').innerHTML = hours.toFixed() - temp + 24;
-    var temp = hours.toFixed() * 60;
-    document.getElementById('mins').innerHTML = mins.toFixed() - temp + 60;
-    var temp = mins.toFixed() * 60;
-    document.getElementById('secs').innerHTML = secs.toFixed() - temp + 30;
-    //document.getElementById('secs').innerHTML = Number(document.getElementById('secs').innerHTML) - 1;
+    var days = Math.floor(secsToDate / 86400);
+    var hours = Math.floor(secsToDate / 3600) % 24;
+    var mins = Math.floor(secsToDate / 60) % 60;
+    var secs = secsToDate % 60;
+    console.log(days, hours, mins, secs);
+    
+    document.getElementById('days').innerHTML = days;
+    document.getElementById('hours').innerHTML = hours - 1;
+    document.getElementById('mins').innerHTML = mins;
+    document.getElementById('secs').innerHTML = secs.toFixed();
+    
+    if(document.getElementById('days').innerHTML.length == 1){
+    	document.getElementById('days').innerHTML = "0" + document.getElementById('days').innerHTML;
+    }
+    if(document.getElementById('hours').innerHTML.length == 1){
+    	document.getElementById('hours').innerHTML = "0" + document.getElementById('hours').innerHTML;
+    }
+    if(document.getElementById('mins').innerHTML.length == 1){
+    	document.getElementById('mins').innerHTML = "0" + document.getElementById('mins').innerHTML;
+    }
+    if(document.getElementById('secs').innerHTML.length == 1){
+    	document.getElementById('secs').innerHTML = "0" + document.getElementById('secs').innerHTML;
+    }
+  }
+  
+  function checkCountdown(){
+  	if(window.location.search != ''){
+    	var url = window.location.search;
+      var queries = url.replace('?q=', '');
+      var dateToTrack = queries.slice(0, 8);
+      var fontColor = queries.slice(9, 16);
+      var secsColor = queries.slice(17, 24);
+      var language = queries.slice(25, 27);
+      sessionStorage.setItem('dateToTrack', dateToTrack);
+      sessionStorage.setItem('fontColor', fontColor);
+      sessionStorage.setItem('secsColor', secsColor);
+      sessionStorage.setItem('language', language);
+      
+      sessionStorage.setItem('day', dateToTrac.slice(0, 1));
+      sessionStorage.setItem('month', dateToTrac.slice(2, 3));
+      sessionStorage.setItem('year', dateToTrac.slice(4, 7));
+      sessionStorage.setItem('hour', dateToTrac.slice(8, 9));
+      sessionStorage.setItem('minute', dateToTrac.slice(10, 11));
+      // 01012000+#ffffff+#ff0000+de
+      
+      // sessionStorage.getItem('day');
+    }
   }
 </script>
