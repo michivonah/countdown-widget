@@ -92,14 +92,26 @@ var{
       sessionStorage.setItem('secsColor', secsColor);
       sessionStorage.setItem('language', language);
       
-      sessionStorage.setItem('day', dateToTrac.slice(0, 1));
-      sessionStorage.setItem('month', dateToTrac.slice(2, 3));
-      sessionStorage.setItem('year', dateToTrac.slice(4, 7));
-      sessionStorage.setItem('hour', dateToTrac.slice(8, 9));
-      sessionStorage.setItem('minute', dateToTrac.slice(10, 11));
+      sessionStorage.setItem('day', dateToTrack.slice(0, 1));
+      sessionStorage.setItem('month', dateToTrack.slice(2, 3));
+      sessionStorage.setItem('year', dateToTrack.slice(4, 7));
+      sessionStorage.setItem('hour', dateToTrack.slice(8, 9));
+      sessionStorage.setItem('minute', dateToTrack.slice(10, 11));
       // 01012000+#ffffff+#ff0000+de
       
       // sessionStorage.getItem('day');
+    }
+    else{
+    	sessionStorage.setItem('dateToTrack', "empty");
+      sessionStorage.setItem('fontColor', "empty");
+      sessionStorage.setItem('secsColor', "empty");
+      sessionStorage.setItem('language', "en");
+      
+      sessionStorage.setItem('day', 31);
+      sessionStorage.setItem('month', 12);
+      sessionStorage.setItem('year', 2021);
+      sessionStorage.setItem('hour', 12);
+      sessionStorage.setItem('minute', 00);
     }
   }
   
