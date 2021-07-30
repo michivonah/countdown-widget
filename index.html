@@ -5,6 +5,7 @@ body{
   font-family: arial, sans-serif;
   user-select: none;
   background: var(--backgroundcolor);
+  text-align: center;
   
   --textcolor: #000;
   --backgroundcolor: transparent;
@@ -12,7 +13,7 @@ body{
 }
 
 #counter{
-  font-size: 16vw;
+  font-size: 14vw;
   color: var(--textcolor);
   margin: 0;
   padding: 0;
@@ -93,10 +94,10 @@ var{
       sessionStorage.setItem('language', language);
       
       sessionStorage.setItem('day', dateToTrack.slice(0, 2));
-      sessionStorage.setItem('month', dateToTrack.slice(3, 5));
-      sessionStorage.setItem('year', dateToTrack.slice(6, 10));
-      sessionStorage.setItem('hour', dateToTrack.slice(11, 13));
-      sessionStorage.setItem('minute', dateToTrack.slice(14, 16));
+      sessionStorage.setItem('month', dateToTrack.slice(3, 4));
+      sessionStorage.setItem('year', dateToTrack.slice(4, 8));
+      sessionStorage.setItem('hour', dateToTrack.slice(10, 12));
+      sessionStorage.setItem('minute', dateToTrack.slice(13, 15));
       // 010120001200+#ffffff+#ff0000+de
       
       // sessionStorage.getItem('day');
