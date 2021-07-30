@@ -47,6 +47,9 @@ var{
     var year = sessionStorage.getItem('year');
     //var hour = sessionStorage.getItem('hour');
     //var minute = sessionStorage.getItem('minute');
+    //var day = 12;
+    //var month = 12;
+    //var year = 2021;
     var hour = 12;
     var minute = 00;
     var createDate = month + ', ' + day + ', ' + year + ' ' + hour + ':' + minute + ':00';
@@ -86,10 +89,10 @@ var{
   	if(window.location.search != ''){
     	var url = window.location.search;
       var queries = url.replace('?q=', '');
-      var dateToTrack = queries.slice(0, 10);
-      var fontColor = queries.slice(11, 18);
-      var secsColor = queries.slice(19, 26);
-      var language = queries.slice(27, 29);
+      var dateToTrack = queries.slice(0, 12);
+      var fontColor = queries.slice(13, 20);
+      var secsColor = queries.slice(21, 28);
+      var language = queries.slice(29, 31);
       sessionStorage.setItem('dateToTrack', dateToTrack);
       sessionStorage.setItem('fontColor', fontColor);
       sessionStorage.setItem('secsColor', secsColor);
@@ -105,7 +108,7 @@ var{
       // sessionStorage.getItem('day');
     }
     else{
-    	sessionStorage.setItem('dateToTrack', "empty");
+    	sessionStorage.setItem('dateToTrack', "010120001200");
       sessionStorage.setItem('fontColor', "empty");
       sessionStorage.setItem('secsColor', "empty");
       sessionStorage.setItem('language', "en");
