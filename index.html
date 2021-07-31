@@ -6,7 +6,7 @@ body{
   user-select: none;
   background: var(--backgroundcolor);
   text-align: center;
-  
+
   --textcolor: #000;
   --backgroundcolor: transparent;
   --secoundscolor: #e74c3c;
@@ -40,11 +40,12 @@ var{
     <p id="counterlabels">Tage, Stunden, Minuten, Sekunden</p>
   </div>
 </body>
-<script>  
+<script>
   function countdown(){
   	var day = sessionStorage.getItem('day');
     var month = sessionStorage.getItem('month');
     var year = sessionStorage.getItem('year');
+    console.log(day, month, year)
     //var hour = sessionStorage.getItem('hour');
     //var minute = sessionStorage.getItem('minute');
     //var day = 12;
@@ -53,9 +54,9 @@ var{
     var hour = 12;
     var minute = 00;
     var createDate = month + ', ' + day + ', ' + year + ' ' + hour + ':' + minute + ':00';
-    console.log(createDate);
-    
-  
+    //console.log(createDate);
+
+
     var dateNow = new Date();
     //var dateCountdown = new Date('12, 31, 2021 12:00:00');
     var dateCountdown = new Date(createDate);
@@ -64,13 +65,13 @@ var{
     var hours = Math.floor(secsToDate / 3600) % 24;
     var mins = Math.floor(secsToDate / 60) % 60;
     var secs = secsToDate % 60;
-    console.log(days, hours, mins, secs);
-    
+    //console.log(days, hours, mins, secs);
+
     document.getElementById('days').innerHTML = days;
-    document.getElementById('hours').innerHTML = hours - 1;
+    document.getElementById('hours').innerHTML = hours;
     document.getElementById('mins').innerHTML = mins;
     document.getElementById('secs').innerHTML = secs.toFixed();
-    
+
     if(document.getElementById('days').innerHTML.length == 1){
     	document.getElementById('days').innerHTML = "0" + document.getElementById('days').innerHTML;
     }
@@ -84,7 +85,7 @@ var{
     	document.getElementById('secs').innerHTML = "0" + document.getElementById('secs').innerHTML;
     }
   }
-  
+
   function checkCountdown(){
   	if(window.location.search != ''){
     	var url = window.location.search;
@@ -97,30 +98,43 @@ var{
       sessionStorage.setItem('fontColor', fontColor);
       sessionStorage.setItem('secsColor', secsColor);
       sessionStorage.setItem('language', language);
-      
-      sessionStorage.setItem('day', dateToTrack.slice(0, 1));
-      sessionStorage.setItem('month', dateToTrack.slice(2, 3));
+
+      sessionStorage.setItem('day', dateToTrack.slice(0, 2));
+      sessionStorage.setItem('month', dateToTrack.slice(2, 4));
       sessionStorage.setItem('year', dateToTrack.slice(4, 8));
-      sessionStorage.setItem('hour', dateToTrack.slice(9, 11));
-      sessionStorage.setItem('minute', dateToTrack.slice(12, 14));
+      sessionStorage.setItem('hour', dateToTrack.slice(8, 10));
+      sessionStorage.setItem('minute', dateToTrack.slice(10, 12));
       // 010120001200+#ffffff+#ff0000+de
-      
+
       // sessionStorage.getItem('day');
     }
     else{
-    	sessionStorage.setItem('dateToTrack', "010120001200");
-      sessionStorage.setItem('fontColor', "empty");
-      sessionStorage.setItem('secsColor', "empty");
-      sessionStorage.setItem('language', "en");
-      
-      sessionStorage.setItem('day', 31);
+    	var url = window.location.search;
+      var queries = "311220211200+#ffffff+#ff0000+de";
+      var dateToTrack = Number(queries.slice(0, 12));
+      var fontColor = queries.slice(13, 20);
+      var secsColor = queries.slice(21, 28);
+      var language = queries.slice(29, 31);
+
+    	sessionStorage.setItem('dateToTrack', dateToTrack);
+      sessionStorage.setItem('fontColor', fontColor);
+      sessionStorage.setItem('secsColor', secsColor);
+      sessionStorage.setItem('language', language);
+
+      sessionStorage.setItem('day', dateToTrack.slice(0, 2));
+      sessionStorage.setItem('month', dateToTrack.slice(2, 4));
+      sessionStorage.setItem('year', dateToTrack.slice(4, 8));
+      sessionStorage.setItem('hour', dateToTrack.slice(8, 10));
+      sessionStorage.setItem('minute', dateToTrack.slice(10, 12));
+
+      /*sessionStorage.setItem('day', 31);
       sessionStorage.setItem('month', 12);
       sessionStorage.setItem('year', 2021);
       sessionStorage.setItem('hour', 12);
-      sessionStorage.setItem('minute', 00);
+      sessionStorage.setItem('minute', 00);*/
     }
   }
-  
+
   window.addEventListener('load', () => {
   	checkCountdown();
   });
