@@ -1,2 +1,2 @@
 # countdown-widget
-The countdown is incorrect, I did an calculating error.
+Its a free to use countdown widget for your website.
