@@ -7,7 +7,7 @@ body{
   background: var(--backgroundcolor);
   text-align: center;
 
-  --textcolor: #000;
+  --textcolor: #000000;
   --backgroundcolor: transparent;
   --secoundscolor: #e74c3c;
 }
@@ -98,19 +98,27 @@ var{
       sessionStorage.setItem('fontColor', fontColor);
       sessionStorage.setItem('secsColor', secsColor);
       sessionStorage.setItem('language', language);
+      
+      if(language == "en"){
+        document.getElementById('counterlabels').innerHTML = "Days, Hours, Minutes, Seconds";
+      }
 
       sessionStorage.setItem('day', dateToTrack.slice(0, 2));
       sessionStorage.setItem('month', dateToTrack.slice(2, 4));
       sessionStorage.setItem('year', dateToTrack.slice(4, 8));
       sessionStorage.setItem('hour', dateToTrack.slice(8, 10));
       sessionStorage.setItem('minute', dateToTrack.slice(10, 12));
+      
+      document.body.style.setProperty('--textcolor', fontColor);
+      document.body.style.setProperty('--secoundscolor', secsColor);
+      
       // 010120001200+#ffffff+#ff0000+de
 
       // sessionStorage.getItem('day');
     }
     else{
     	var url = window.location.search;
-      var queries = "311220211200+#ffffff+#ff0000+de";
+      var queries = "311220211200+#ffffff+#ff0000+en";
       var dateToTrack = Number(queries.slice(0, 12));
       var fontColor = queries.slice(13, 20);
       var secsColor = queries.slice(21, 28);
@@ -120,12 +128,19 @@ var{
       sessionStorage.setItem('fontColor', fontColor);
       sessionStorage.setItem('secsColor', secsColor);
       sessionStorage.setItem('language', language);
+      
+      if(language == "en"){
+        document.getElementById('counterlabels').innerHTML = "Days, Hours, Minutes, Seconds";
+      }
 
       sessionStorage.setItem('day', dateToTrack.slice(0, 2));
       sessionStorage.setItem('month', dateToTrack.slice(2, 4));
       sessionStorage.setItem('year', dateToTrack.slice(4, 8));
       sessionStorage.setItem('hour', dateToTrack.slice(8, 10));
       sessionStorage.setItem('minute', dateToTrack.slice(10, 12));
+      
+      document.body.style.setProperty('--textcolor', fontColor);
+      document.body.style.setProperty('--secoundscolor', secsColor);
 
       /*sessionStorage.setItem('day', 31);
       sessionStorage.setItem('month', 12);
