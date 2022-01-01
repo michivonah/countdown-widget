@@ -48,9 +48,9 @@ var{
 </body>
 <script>
   function countdown(){
-  	var day = sessionStorage.getItem('day');
-    var month = sessionStorage.getItem('month');
-    var year = sessionStorage.getItem('year');
+  	var day = parseInt(sessionStorage.getItem('day'));
+    var month = parseInt(sessionStorage.getItem('month'));
+    var year = parseInt(sessionStorage.getItem('year'));
     console.log(day, month, year)
     //var hour = sessionStorage.getItem('hour');
     //var minute = sessionStorage.getItem('minute');
@@ -67,6 +67,7 @@ var{
     //var dateCountdown = new Date('12, 31, 2021 12:00:00');
     var dateCountdown = new Date(createDate);
     var secsToDate = Math.abs(dateCountdown - dateNow) / 1000;
+    secsToDate = parseInt(secsToDate);
     var days = Math.floor(secsToDate / 86400);
     var hours = Math.floor(secsToDate / 3600) % 24;
     var mins = Math.floor(secsToDate / 60) % 60;
@@ -96,7 +97,7 @@ var{
   	if(window.location.search != ''){
     	var url = window.location.search;
       var queries = url.replace('?q=', '');
-      var dateToTrack = queries.slice(0, 12);
+      var dateToTrack = parseInt(queries.slice(0, 12), 10);
       var fontColor = queries.slice(13, 20);
       var secsColor = queries.slice(21, 28);
       var language = queries.slice(29, 31);
@@ -109,14 +110,14 @@ var{
         document.getElementById('counterlabels').innerHTML = "Days, Hours, Minutes, Seconds";
       }
 
-      sessionStorage.setItem('day', dateToTrack.slice(0, 2));
-      sessionStorage.setItem('month', dateToTrack.slice(2, 4));
-      sessionStorage.setItem('year', dateToTrack.slice(4, 8));
-      sessionStorage.setItem('hour', dateToTrack.slice(8, 10));
-      sessionStorage.setItem('minute', dateToTrack.slice(10, 12));
+      sessionStorage.setItem('day', parseInt(dateToTrack.slice(0, 2)));
+      sessionStorage.setItem('month', parseInt(dateToTrack.slice(2, 4)));
+      sessionStorage.setItem('year', parseInt(dateToTrack.slice(4, 8)));
+      sessionStorage.setItem('hour', parseInt(dateToTrack.slice(8, 10)));
+      sessionStorage.setItem('minute', parseInt(dateToTrack.slice(10, 12)));
       
-      document.body.style.setProperty('--textcolor', fontColor);
-      document.body.style.setProperty('--secoundscolor', secsColor);
+      //document.body.style.setProperty('--textcolor', fontColor);
+      //document.body.style.setProperty('--secoundscolor', secsColor);
       
       // 010120001200+#ffffff+#ff0000+de
 
@@ -124,29 +125,29 @@ var{
     }
     else{
     	var url = window.location.search;
-      var queries = "311220211200+#ffffff+#ff0000+en";
-      var dateToTrack = Number(queries.slice(0, 12));
+      var queries = "311220221200+#ffffff+#ff0000+en";
+      var dateToTrack = parseInt(queries.slice(0, 12), 10);
       var fontColor = queries.slice(13, 20);
       var secsColor = queries.slice(21, 28);
       var language = queries.slice(29, 31);
 
     	sessionStorage.setItem('dateToTrack', dateToTrack);
-      sessionStorage.setItem('fontColor', fontColor);
-      sessionStorage.setItem('secsColor', secsColor);
+      //sessionStorage.setItem('fontColor', fontColor);
+      //sessionStorage.setItem('secsColor', secsColor);
       sessionStorage.setItem('language', language);
       
       if(language == "en"){
         document.getElementById('counterlabels').innerHTML = "Days, Hours, Minutes, Seconds";
       }
 
-      sessionStorage.setItem('day', dateToTrack.slice(0, 2));
-      sessionStorage.setItem('month', dateToTrack.slice(2, 4));
-      sessionStorage.setItem('year', dateToTrack.slice(4, 8));
-      sessionStorage.setItem('hour', dateToTrack.slice(8, 10));
-      sessionStorage.setItem('minute', dateToTrack.slice(10, 12));
+      sessionStorage.setItem('day', parseInt(dateToTrack.slice(0, 2)));
+      sessionStorage.setItem('month', parseInt(dateToTrack.slice(2, 4)));
+      sessionStorage.setItem('year', parseInt(dateToTrack.slice(4, 8)));
+      sessionStorage.setItem('hour', parseInt(dateToTrack.slice(8, 10)));
+      sessionStorage.setItem('minute', parseInt(dateToTrack.slice(10, 12)));
       
-      document.body.style.setProperty('--textcolor', fontColor);
-      document.body.style.setProperty('--secoundscolor', secsColor);
+      //document.body.style.setProperty('--textcolor', fontColor);
+      //document.body.style.setProperty('--secoundscolor', secsColor);
 
       /*sessionStorage.setItem('day', 31);
       sessionStorage.setItem('month', 12);
